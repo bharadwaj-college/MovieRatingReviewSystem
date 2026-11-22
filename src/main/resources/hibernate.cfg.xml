@@ -6,23 +6,17 @@
 <hibernate-configuration>
     <session-factory>
 
-        <!-- MySQL Database Connection -->
+        <!-- MySQL Driver -->
         <property name="hibernate.connection.driver_class">
             com.mysql.cj.jdbc.Driver
         </property>
 
+        <!-- Enzonic Cloud Database -->
         <property name="hibernate.connection.url">
-            jdbc:mysql://localhost:3306/movie_review_db
+            jdbc:mysql://moviereviewdb-vxyg11.db.enzonic.com:3306/main?sslMode=REQUIRED&amp;serverTimezone=UTC
         </property>
 
-        <property name="hibernate.connection.username">
-            root
-        </property>
-
-        <property name="hibernate.connection.password">
-        </property>
-
-        <!-- Hibernate Database Settings -->
+        <!-- Hibernate Settings -->
         <property name="hibernate.dialect">
             org.hibernate.dialect.MySQLDialect
         </property>
@@ -30,10 +24,10 @@
         <property name="hibernate.show_sql">true</property>
         <property name="hibernate.format_sql">true</property>
 
-        <!-- Preserve existing database tables -->
+        <!-- Preserve Existing Tables -->
         <property name="hibernate.hbm2ddl.auto">validate</property>
 
-        <!-- Register Entity Classes -->
+        <!-- Entity Classes -->
         <mapping class="com.movierating.movieratingreviewsystem.entity.User"/>
         <mapping class="com.movierating.movieratingreviewsystem.entity.Genre"/>
         <mapping class="com.movierating.movieratingreviewsystem.entity.Movie"/>

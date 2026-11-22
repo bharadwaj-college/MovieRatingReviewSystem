@@ -12,9 +12,22 @@ public class HibernateUtil {
 
     private static SessionFactory buildSessionFactory() {
 
+        String username = System.getenv("DB_USERNAME");
+        String password = System.getenv("DB_PASSWORD");
+
+        if (username == null || password == null) {
+            throw new IllegalStateException(
+                "Database credentials are not configured."
+            );
+        }
+
         StandardServiceRegistry registry =
                 new StandardServiceRegistryBuilder()
                         .configure("hibernate.cfg.xml")
+                        .applySetting(
+                            "hibernate.connection.username", username)
+                        .applySetting(
+                            "hibernate.connection.password", password)
                         .build();
 
         try {
